@@ -27,10 +27,12 @@ public class CustomTab {
             .icon(() -> new ItemStack(PlantaMedicinalItem.MARIHUANA_ITEM.get()))
             // Add default items to tab
             .displayItems((params, output) -> {
-                output.accept(DeportesItem.BALON_BALONCESTO_ITEM.get()); // Tu balón de baloncesto
-                output.accept(PlantaMedicinalItem.MARIHUANA_ITEM.get()); // Tu planta medicinal
-                output.accept(DeportesItem.BALON_FUTBOL_ITEM.get()); // Balon de futbol
-                output.accept(DeportesItem.BALON_RUGBY_ITEM.get()); // Balon de Rygby
+                for(RegistryObject<Item> item:DeportesItem.DEPORTES_ITEMS.getEntries()) {
+                    output.accept(item.get());
+                }
+                for(RegistryObject<Item> itemMari:PlantaMedicinalItem.PLANTAS_ITEM.getEntries()) {
+                    output.accept(itemMari.get());
+                }
             })
             .build()
     );
